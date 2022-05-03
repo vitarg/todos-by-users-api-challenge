@@ -2,7 +2,15 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteTodo } from "../redux/features/todosReducer";
 
-const ButtonDeleteTodo = ({ id, deleting }) => {
+interface ButtonDeleteTodoProps {
+  id: string;
+  deleting: boolean;
+}
+
+const ButtonDeleteTodo: React.FC<ButtonDeleteTodoProps> = ({
+  id,
+  deleting,
+}) => {
   const dispatch = useDispatch();
 
   return (
@@ -16,11 +24,12 @@ const ButtonDeleteTodo = ({ id, deleting }) => {
           className="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        > </span>
+        >
+          {" "}
+        </span>
       ) : (
         "✕"
       )}
-
     </button>
   );
 };
